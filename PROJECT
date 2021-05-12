@@ -1,0 +1,16 @@
+domain: schidlow.ski
+layout:
+- go.kubebuilder.io/v3
+projectName: k8s-operators
+repo: github.com/schidstorm/k8s-operators
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: schidlow.ski
+  group: minecraft
+  kind: Minecraft
+  path: github.com/schidstorm/k8s-operators/api/v1
+  version: v1
+version: "3"

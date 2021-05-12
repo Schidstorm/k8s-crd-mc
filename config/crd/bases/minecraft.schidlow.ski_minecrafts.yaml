@@ -1,0 +1,94 @@
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.4.1
+  creationTimestamp: null
+  name: minecrafts.minecraft.schidlow.ski
+spec:
+  group: minecraft.schidlow.ski
+  names:
+    kind: Minecraft
+    listKind: MinecraftList
+    plural: minecrafts
+    singular: minecraft
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: Minecraft is the Schema for the minecrafts API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: MinecraftSpec defines the desired state of Minecraft
+            properties:
+              difficulty:
+                type: string
+              mode:
+                enum:
+                - survival
+                - hardcore
+                - survival
+                type: string
+              motd:
+                type: string
+              name:
+                type: string
+              ports:
+                properties:
+                  minecraft:
+                    type: integer
+                required:
+                - minecraft
+                type: object
+              seed:
+                type: string
+              template:
+                type: object
+            required:
+            - template
+            type: object
+          status:
+            description: MinecraftStatus defines the observed state of Minecraft
+            properties:
+              mode:
+                description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
+                  of cluster Important: Run "make" to regenerate code after modifying
+                  this file'
+                enum:
+                - survival
+                - hardcore
+                - survival
+                type: string
+              pod:
+                type: string
+              status:
+                type: string
+            required:
+            - status
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

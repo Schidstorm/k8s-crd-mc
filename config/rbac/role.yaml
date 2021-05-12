@@ -1,0 +1,52 @@
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - minecraft.schidlow.ski
+  resources:
+  - minecrafts
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - minecraft.schidlow.ski
+  resources:
+  - minecrafts/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - minecraft.schidlow.ski
+  resources:
+  - minecrafts/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - minecraft.schidlow.ski
+  resources:
+  - pods
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - minecraft.schidlow.ski
+  resources:
+  - pods/status
+  verbs:
+  - get

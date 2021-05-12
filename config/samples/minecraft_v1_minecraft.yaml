@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mc
+
+---
+
+
+apiVersion: minecraft.schidlow.ski/v1
+kind: Minecraft
+metadata:
+  name: minecraft-sample
+  namespace: mc
+spec:
+  # Add fields here
+  mode: survival
+  name: Sauron Minecraft
+  motd:
+  seed: '541341167320851'
+  difficulty: hard
+  ports:
+    minecraft: 25565
+
+  template:
+    labels:
+      app: minecraft-server
